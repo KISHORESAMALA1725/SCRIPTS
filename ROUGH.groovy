@@ -1,14 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        label 'java-slave'
+    }
     stages {
-        stage ('BRANCH_EXECUTION') {
-            when {
-                expression {
-                    branch_name ==~ /(feature|hotfix|kishore)/
-                }
+        stage('input stage') {
+            input {
+                message "please select any option"
+                ok "approved"
+                submitter "mahesh123"
             }
             steps {
-                echo "Required feature branch got executed"
+                echo "this is success"
             }
         }
     }
